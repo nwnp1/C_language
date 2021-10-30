@@ -1,22 +1,28 @@
 #include <stdio.h>
-
-void print_str(char** pps, int cnt)
-{
-	int i;
-
-	for (i = 0; i < cnt; i++)
-	{
-		printf("%s\n", pps[i]);
-	}
-}
+#include <stdlib.h>
 
 int main(void)
 {
-	char* ptr_ary[] = { "eagle", "asda", "Asdas", "asda" };
-	int count;
+	int* pi;
+	doubld* pd;
 
-	count = sizeof(ptr_ary) / sizeof(ptr_ary[0]);
-	print_str(&ptr_ary, count);
+	pi = (int*)malloc(sizeof(int));
+	if (pi == NULL)
+	{
+		printf("#으로 메모리가 부족합니다.\n");
+		exit(1);
+	}
+
+	pd = (double*)malloc(sizeof(double));
+
+	*pi = 10;
+	*pd = 3.4;
+
+	printf("정수형으로 사용:%d\n", *pi);
+	printf("실수형으로 사용: %lf\n", *pd);
+
+	free(pi);
+	free(pd);
 
 	return 0;
 }
